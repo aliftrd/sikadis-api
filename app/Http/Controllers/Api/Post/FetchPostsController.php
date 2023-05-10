@@ -10,7 +10,7 @@ class FetchPostsController extends Controller
     public function __invoke()
     {
         $posts = (FetchPostsAction::resolve()->execute())->response()->getData();
-
+        
         return $this->resolveForSuccessResponseWith('Fetch posts successfully', compact('posts'), 200);
     }
 }
