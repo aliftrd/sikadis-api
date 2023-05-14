@@ -12,9 +12,11 @@ class UpdatePostAction extends Action
     public function execute(UpdatePostRequest $request, Post $post): void
     {
         $post->update([
+            'category_id' => $request->category,
             'title' => $request->title,
             'content' => $request->content,
             'status' => $request->status,
+            'priority' => $request->priority,
         ]);
 
         if (!empty($request->thumbnail)) {

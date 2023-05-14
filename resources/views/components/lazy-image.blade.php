@@ -3,7 +3,7 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('backend/plugins/lazyload/lazyload.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/lazyload/jquery.lazyload.min.js') }}"></script>
     <script type="text/javascript">
         $(function () {
             $('.lazyload').Lazy({

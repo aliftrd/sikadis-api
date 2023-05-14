@@ -1,6 +1,4 @@
-@extends('layouts.auth')
-
-@section('title', isset($page) ? 'Edit Page' : 'Create Page')
+@extends('layouts.auth', ['title' => isset($page) ? 'Update Page' : 'Create Page'])
 
 @section('content')
     <div class="container">
@@ -63,6 +61,14 @@
                                         </small>
                                     @endisset
                                 @endif
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="priority"
+                                           id="customSwitch1"
+                                        {{ old('priority', isset($page) && $page->priority) == 1 ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="customSwitch1">Priority</label>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ class FetchPostsAction extends Action
         $posts = Post::with(['firstImage', 'category'])
             ->status(1)
             ->latest()
-            ->simplePaginate(2);
+            ->simplePaginate(10);
 
         return PostResource::collection($posts);
     }

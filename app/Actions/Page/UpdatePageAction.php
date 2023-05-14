@@ -15,6 +15,7 @@ class UpdatePageAction extends Action
             'title' => $request->title,
             'content' => $request->content,
             'status' => $request->status,
+            'priority' => $request->priority,
         ]);
 
         if (!empty($request->thumbnail)) {

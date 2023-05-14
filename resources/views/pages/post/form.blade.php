@@ -1,6 +1,4 @@
-@extends('layouts.auth')
-
-@section('title', isset($post) ? 'Edit Post' : 'Create Post')
+@extends('layouts.auth', ['title' => isset($post) ? 'Update Post' : 'Create Post'])
 
 @section('content')
     <div class="container">

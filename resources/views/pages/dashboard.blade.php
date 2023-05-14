@@ -1,37 +1,21 @@
-@extends('layouts.auth')
+@extends('layouts.auth', ['title' => 'Dashboard'])
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card bg-info text-white">
-                    <div class="card-body">
-                        <div class="dashboard-info row">
-                            <div class="info-text col-md-6">
-                                <h5 class="card-title">Welcome back Anna!</h5>
-                                <p>Get familiar with dashboard, here are some ways to get started.</p>
-                                <ul>
-                                    <li>Check some stats for your website bellow</li>
-                                    <li>Sync content to other devices</li>
-                                    <li>You now have access to File Manager app.</li>
-                                </ul>
-                                <a href="#" class="btn btn-warning m-t-xs">Learn More</a>
-                            </div>
-                            <div class="info-image col-md-6"></div>
-                        </div>
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="dashboard-info row">
+                    <div class="info-text col-md-6">
+                        <h5 class="card-title">Hi! I'm glad to see you again {{ auth()->user()->name }}</h5>
+                        <p>Get familiar with dashboard, here are some ways to get started.</p>
+                        <ul>
+                            <li>Check some stats for your website bellow</li>
+                            <li>Sync content to other devices</li>
+                            <li>You now have access to File Manager app.</li>
+                        </ul>
+                        <a href="#" class="btn btn-warning m-t-xs">Learn More</a>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="">
-                            <div class="">
-                                <h5 class="card-title">Daily Visitors</h5>
-                                <canvas id="visitorsChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="info-image col-md-6"></div>
                 </div>
             </div>
         </div>
@@ -56,8 +40,8 @@
                         <h2 class="float-right">14.3K</h2>
                         <p>Orders in waitlist</p>
                         <div class="progress" style="height: 10px;">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%"
-                                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>

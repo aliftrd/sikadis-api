@@ -27,4 +27,7 @@ Route::group(['prefix' => 'v1', 'as' => 'v1.'], function () {
     Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
         Route::get('/', \App\Http\Controllers\Api\Post\FetchPostsController::class)->name('index');
     });
+    Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {
+        Route::get('/', \App\Http\Controllers\Api\Slider\FetchSlidersController::class)->name('index');
+    });
 });

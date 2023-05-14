@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -20,6 +21,7 @@ class Page extends Model implements HasMedia
         'slug',
         'content',
         'status',
+        'priority',
     ];
 
     protected $casts = [
@@ -46,5 +48,15 @@ class Page extends Model implements HasMedia
     public function getMainImageUrlAttribute(): null|string
     {
         return $this->firstImage?->getUrl();
+    }
+
+    public function scopeStatus(Builder $query, int $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    public function scopePriority()
+    {
+        return $this->where('priority', 1);
     }
 }

@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.partials.meta')
-    <title>{{ join(' - ', [$title, $WEBSITE_TITLE ?? config('app.name', 'Laravel')]) }}</title>
+    <title>{{ join(' - ', [$title, config('app.name', 'Laravel')]) }}</title>
     @include('layouts.partials.styles')
 </head>
 <body>

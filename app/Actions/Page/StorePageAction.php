@@ -15,6 +15,7 @@ class StorePageAction extends Action
             'title' => $request->title,
             'content' => $request->content,
             'status' => $request->status,
+            'priority' => $request->priority,
         ]);
 
         $page->addMedia(Storage::path($request->thumbnail))->toMediaCollection(Page::IMAGE_COLLECTION);

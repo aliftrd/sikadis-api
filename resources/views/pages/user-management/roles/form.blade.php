@@ -1,6 +1,4 @@
-@extends('layouts.auth')
-
-@section('title', isset($role) ? 'Update Role' : 'Create Role')
+@extends('layouts.auth', ['title' => isset($role) ? 'Update Role' : 'Create Role'])
 
 @section('content')
     <div class="container">

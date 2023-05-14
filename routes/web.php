@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['as' => 'landing.'], function () {
+    Route::get('/', [\App\Http\Controllers\LandingController::class, 'welcome'])->name('welcome');
 });
 
 Auth::routes([
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'v
         Route::patch('/change-password', [App\Http\Controllers\Auth\PasswordController::class, 'update'])->name('password.update');
     });
 
-    Route::get('/dashboard', App\Http\Controllers\HomeController::class)->name('dashboard');
+    Route::get('/dashboard', App\Http\Controllers\DashboardController::class)->name('dashboard');
 
     Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
         Route::get('', App\Http\Controllers\UserManagement\Role\FetchRolesController::class)->name('index');

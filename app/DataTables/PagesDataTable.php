@@ -22,9 +22,12 @@ class PagesDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->rawColumns(['action', 'title'])
+            ->rawColumns(['action'])
             ->addColumn('action', function (Page $page) {
                 return view('pages.page.columns.actions', compact('page'));
+            })
+            ->editColumn('title', function (Page $page) {
+                return implode([$page->priority ? '⭐' : '', $page->title]);
             })
             ->editColumn('status', function (Page $page) {
                 return $page->status ? 'Publish' : 'Draft';

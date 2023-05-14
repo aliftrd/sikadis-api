@@ -16,6 +16,7 @@ class StorePageRequest extends FormRequest
             'content' => ['required', 'string'],
             'thumbnail' => ['required', 'string', new ValidFileUploadRule(['image/jpeg', 'image/png'])],
             'status' => ['required', 'string', 'in:draft,publish'],
+            'priority' => ['nullable'],
         ];
     }
 
@@ -23,6 +24,7 @@ class StorePageRequest extends FormRequest
     {
         $this->merge([
             'status' => $this->status == 'draft' ? 0 : 1,
+            'priority' => $this->priority ? 1 : 0,
         ]);
     }
 

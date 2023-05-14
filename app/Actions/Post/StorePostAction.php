@@ -16,6 +16,7 @@ class StorePostAction extends Action
             'title' => $request->title,
             'content' => $request->content,
             'status' => $request->status,
+            'priority' => $request->priority,
         ]);
 
         $post->addMedia(Storage::path($request->thumbnail))->toMediaCollection(Post::IMAGE_COLLECTION);

@@ -1,6 +1,4 @@
-@extends('layouts.auth')
-
-@section('title', 'Profile')
+@extends('layouts.auth', ['title' => 'Profile'])
 
 @section('content')
     <div class="container">

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.partials.meta')
-    <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ join(' - ', [$title, config('app.name', 'Laravel')]) }}   </title>
     @include('layouts.partials.styles')
 </head>
 <body>
@@ -21,7 +21,7 @@
     </div>
     <div class="lime-footer">
         <div class="d-flex justify-content-center">
-            <span class="footer-text">2019 © SIKADIS</span>
+            <span class="footer-text">{{ join(' © ', [date('Y'), config('app.name', 'Laravel')]) }}</span>
         </div>
     </div>
 </div>

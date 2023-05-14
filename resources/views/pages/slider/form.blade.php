@@ -1,6 +1,4 @@
-@extends('layouts.auth')
-
-@section('title', isset($slider) ? 'Edit Slider' : 'Create Slider')
+@extends('layouts.auth', ['title' => isset($slider) ? 'Update Slider' : 'Create Slider'])
 
 @section('content')
     <div class="container">

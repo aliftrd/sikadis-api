@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Actions\FetchSettingAction;
 use App\Enums\SettingPrefix;
 use App\Models\Setting;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         JsonResource::withoutWrapping();
         if (!$this->app->runningInConsole()) {
-            $general_settings = Setting::prefix(SettingPrefix::GENERAL)->pluck('value', 'variable');
+            $general_settings = FetchSettingAction::resolve()->execute(SettingPrefix::GENERAL);
             $general_settings->each(fn($value, $variable) => \View::share(join('_', ['WEBSITE', $variable]), $value));
         }
     }
