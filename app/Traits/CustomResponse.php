@@ -25,7 +25,7 @@ trait CustomResponse
         ], $code);
     }
 
-    public function resolveForFaiedResponseWith(string $message, array $data = [], int $code = \Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND)
+    public function resolveForFailedResponseWith(string $message, array $data = [], int $code = \Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND)
     {
         return response()->json([
             'success' => false,
