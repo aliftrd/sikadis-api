@@ -13,21 +13,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
-    Route::post('/', [\App\Http\Controllers\Api\UploadController::class, 'upload'])->name('store');
-    Route::delete('/', [\App\Http\Controllers\Api\UploadController::class, 'revert'])->name('revert');
+    Route::post('/', [App\Http\Controllers\Api\UploadController::class, 'upload'])->name('store');
+    Route::delete('/', [App\Http\Controllers\Api\UploadController::class, 'revert'])->name('revert');
 });
 
 Route::group(['prefix' => 'v1', 'as' => 'v1.'], function () {
+    Route::get('/religion', App\Http\Controllers\Api\FetchReligionController::class);
+    Route::post('/ppdb', App\Http\Controllers\Api\StudentCandidate\StoreStudentCandidateController::class);
+
     Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
-        Route::get('/', \App\Http\Controllers\Api\Post\FetchPostsController::class)->name('index');
+        Route::get('/', App\Http\Controllers\Api\Post\FetchPostsController::class)->name('index');
     });
     Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {
-        Route::get('/', \App\Http\Controllers\Api\Slider\FetchSlidersController::class)->name('index');
+        Route::get('/', App\Http\Controllers\Api\Slider\FetchSlidersController::class)->name('index');
     });
 });

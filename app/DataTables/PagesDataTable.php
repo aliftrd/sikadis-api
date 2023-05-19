@@ -32,9 +32,7 @@ class PagesDataTable extends DataTable
             ->editColumn('status', function (Page $page) {
                 return $page->status ? 'Publish' : 'Draft';
             })
-            ->editColumn('updated_at', function (Page $page) {
-                return $page->updated_at->diffForHumans();
-            })
+            ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
 

@@ -26,9 +26,7 @@ class RolesDataTable extends DataTable
             ->addColumn('action', function (\Spatie\Permission\Models\Role $role) {
                 return view('pages.user-management.roles.columns.actions', compact('role'));
             })
-            ->editColumn('updated_at', function (\Spatie\Permission\Models\Role $role) {
-                return $role->updated_at->diffForHumans();
-            })
+            ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
 

@@ -25,9 +25,7 @@ class CategoriesDataTable extends DataTable
             ->addColumn('action', function (Category $category) {
                 return view('pages.post.category.columns.actions', compact('category'));
             })
-            ->editColumn('updated_at', function (Category $category) {
-                return $category->updated_at->diffForHumans();
-            })
+            ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
 

@@ -26,12 +26,13 @@ class UsersDataTable extends DataTable
             ->addColumn('action', function (User $user) {
                 return view('pages.user-management.users.columns.actions', compact('user'));
             })
+            ->editColumn('name', function (User $user) {
+                return implode([$user->email_verified_at ? '✅' : '', $user->name]);
+            })
             ->addColumn('role', function (User $user) {
                 return $user->roles->pluck('name')->implode(', ');
             })
-            ->editColumn('updated_at', function (User $user) {
-                return $user->updated_at->diffForHumans();
-            })
+            ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
 

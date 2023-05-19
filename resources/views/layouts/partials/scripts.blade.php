@@ -39,6 +39,25 @@
                     return event.currentTarget.submit()
                 })
             })
+
+            $(document).on('submit', 'form.active-form', function (event) {
+                event.preventDefault();
+                const button = $(this).find('button[type=submit]').attr('disabled', true);
+                Swal.fire({
+                    title: 'Are you sure you want to continue this action?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    customClass: {
+                        confirmButton: 'btn btn-danger',
+                        cancelButton: 'btn btn-secondary'
+                    },
+                }).then((result) => {
+                    if (!result.isConfirmed) {
+                        return button.attr('disabled', false);
+                    }
+                    return event.currentTarget.submit()
+                })
+            })
         })
     </script>
 @endauth

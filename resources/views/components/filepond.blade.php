@@ -38,14 +38,10 @@
                     url: '{{ route('upload.revert') }}',
                     headers: headers,
                 },
-                load: {
-                    url: '{{ \Illuminate\Support\Facades\Storage::url($value) }}',
-                    headers: headers,
-                }
             },
         })
         pond.on('processfileprogress', function (e) {
-            console.log('FilePond has initialised', e);
+            $(this).find('form>button[type=submit]').attr('disabled', true);
         })
     </script>
 @endpush

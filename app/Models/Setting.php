@@ -11,6 +11,15 @@ class Setting extends Model
 {
     use HasFactory;
 
+    const DIRECTORY_PATH = 'meta/';
+
+    protected $fillable = [
+        'prefix',
+        'variable',
+        'type',
+        'value',
+    ];
+
     public function scopePrefix(Builder $query, int|string|array|SettingPrefix $filter): void
     {
         if (is_array($filter)) {

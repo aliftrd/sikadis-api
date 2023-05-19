@@ -20,7 +20,7 @@ class UploadController extends Controller
 
     public function revert(Request $request)
     {
-        ResolveRevertAction::resolve()->execute($request);
+        ResolveRevertAction::resolve()->execute($request->getContent());
 
         return $this->resolveForSuccessResponseWith('File reverted successfully');
     }

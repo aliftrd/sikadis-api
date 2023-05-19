@@ -28,9 +28,7 @@ class PostsDataTable extends DataTable
             ->editColumn('status', function (Post $post) {
                 return $post->status ? 'Publish' : 'Draft';
             })
-            ->editColumn('updated_at', function (Post $post) {
-                return $post->updated_at->diffForHumans();
-            })
+            ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
 

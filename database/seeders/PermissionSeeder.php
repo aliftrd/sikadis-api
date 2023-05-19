@@ -28,6 +28,20 @@ class PermissionSeeder extends Seeder
             'user.destroy',
         ];
 
+        $academic_years = [
+            'academic.year.view',
+            'academic.year.create',
+            'academic.year.edit',
+            'academic.year.destroy',
+        ];
+
+        $student_candidates = [
+            'student.candidate.view',
+            'student.candidate.create',
+            'student.candidate.edit',
+            'student.candidate.destroy',
+        ];
+
         $sliders = [
             'slider.view',
             'slider.create',
@@ -62,6 +76,8 @@ class PermissionSeeder extends Seeder
         $permissions = collect([
             ...$roles,
             ...$users,
+            ...$academic_years,
+            ...$student_candidates,
             ...$sliders,
             ...$blogs,
             ...$pages,

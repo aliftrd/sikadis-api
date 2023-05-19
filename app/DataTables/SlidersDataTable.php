@@ -31,9 +31,7 @@ class SlidersDataTable extends DataTable
 
                 return view('pages.slider.columns.image', compact('src'));
             })
-            ->editColumn('updated_at', function (Slider $slider) {
-                return $slider->updated_at->diffForHumans();
-            })
+            ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
 

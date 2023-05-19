@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/woocomerce.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    @stack('styles')
 </head>
 <body id="top-header">
 <header class="header-style-2">
@@ -40,7 +41,7 @@
 
                 <nav class="site-navbar ms-auto">
                     <ul class="primary-menu">
-                        <li><a href="{{ route('landing.welcome') }}">Home</a></li>
+                        <li><a href="{{ route('landing.welcome') }}">Beranda</a></li>
                         <li><a href="blog.html">Berita</a></li>
                         @if($priority_pages->count() > 0)
                             <li>
@@ -52,15 +53,18 @@
                                 </ul>
                             </li>
                         @endif
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Kontak</a></li>
                     </ul>
 
                     <a href="#" class="nav-close"><i class="fal fa-times"></i></a>
                 </nav>
 
-                <div class="header-btn border-left-0 ms-3 d-none d-lg-block">
-                    <a href="login.html" class="btn btn-grey-outline btn-sm-2 rounded">PPDB</a>
-                </div>
+                @if($academic_year?->ppdb)
+                    <div class="header-btn border-left-0 ms-3 d-none d-lg-block">
+                        <a href="{{ route('landing.ppdb.index') }}"
+                           class="btn btn-grey-outline btn-sm-2 rounded">PPDB</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -146,5 +150,6 @@
 </script>
 
 <script src="{{ asset('frontend/js/script.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
