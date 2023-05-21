@@ -19,8 +19,12 @@ Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
 });
 
 Route::group(['prefix' => 'v1', 'as' => 'v1.'], function () {
+    Route::get('/meta', App\Http\Controllers\Api\FetchMetaController::class);
     Route::get('/religion', App\Http\Controllers\Api\FetchReligionController::class);
-    Route::post('/ppdb', App\Http\Controllers\Api\StudentCandidate\StoreStudentCandidateController::class);
+    Route::group(['prefix' => 'ppdb'], function () {
+        Route::get('/', App\Http\Controllers\Api\StudentCandidate\FetchPpdbController::class);
+        Route::post('/', App\Http\Controllers\Api\StudentCandidate\StoreStudentCandidateController::class);
+    });
 
     Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
         Route::get('/', App\Http\Controllers\Api\Post\FetchPostsController::class)->name('index');

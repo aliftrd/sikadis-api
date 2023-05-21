@@ -54,17 +54,14 @@
                             </li>
                         @endif
                         <li><a href="contact.html">Kontak</a></li>
+                        @if($academic_year?->ppdb)
+                            <li><a href="{{ route('landing.ppdb.index') }}">PPDB</a></li>
+                        @endif
                     </ul>
 
                     <a href="#" class="nav-close"><i class="fal fa-times"></i></a>
                 </nav>
 
-                @if($academic_year?->ppdb)
-                    <div class="header-btn border-left-0 ms-3 d-none d-lg-block">
-                        <a href="{{ route('landing.ppdb.index') }}"
-                           class="btn btn-grey-outline btn-sm-2 rounded">PPDB</a>
-                    </div>
-                @endif
             </div>
         </div>
     </div>
