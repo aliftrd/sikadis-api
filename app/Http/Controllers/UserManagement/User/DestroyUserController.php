@@ -21,11 +21,11 @@ class DestroyUserController extends Controller
         try {
             DestroyUserAction::resolve()->execute($user);
 
-            return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::SUCCESS, 'User deleted successfully.');
+            return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::SUCCESS, 'User berhasil dihapus.');
         } catch (\Exception $e) {
             $message = match (true) {
                 $e instanceof CannotDeleteLastAdminException, $e instanceof CannotDeleteYourselfException => $e->getMessage(),
-                default => 'Something went wrong.',
+                default => 'Terjadi kesalahan saat menghapus user.',
             };
 
             return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::ERROR, $message);

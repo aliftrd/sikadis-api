@@ -32,4 +32,25 @@ class StoreStudentCandidateRequest extends FormRequest
                 ->max(10 * 1024),],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'nik' => 'NIK',
+            'fullname' => 'Nama Lengkap',
+            'birthplace' => 'Tempat Lahir',
+            'birthdate' => 'Tanggal Tahun Lahir',
+            'gender' => 'Jenis Kelamin',
+            'religion' => 'Agama',
+            'father_name' => 'Nama Ayah',
+            'father_occupation' => 'Pekerjaan Ayah',
+            'mother_name' => 'Nama Ibu',
+            'mother_occupation' => 'Pekerjaan Ibu',
+            'address' => 'Alamat',
+            'guardian_name' => 'Nama Wali',
+            'guardian_occupation' => 'Pekerjaan Wali',
+            'guardian_address' => 'Alamat Wali',
+            'files' => 'File Pendukung',
+        ];
+    }
 }

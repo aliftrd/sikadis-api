@@ -1,10 +1,11 @@
-@extends('layouts.auth', ['title' => isset($user) ? 'Update User' : 'Create User'])
+@props(['title' => isset($user) ? 'Update User' : 'Buat User'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ isset($user) ? 'Update User' : 'Create User' }}</h1>
+                <h1 class="card-title">{{ $title }}</h1>
                 <form action="{{ isset($user) ? route('admin.users.update', $user->id) : route('admin.users.store') }}"
                       method="POST">
                     @csrf
@@ -13,7 +14,7 @@
                     @endisset
 
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Nama</label>
                         <input type="text" name="name" id="name"
                                class="form-control @error('name') is-invalid @enderror"
                                value="{{ old('name', isset($user) ? $user->name : '') }}" required>
@@ -61,7 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password-confirmation">Password Confirmation</label>
+                        <label for="password-confirmation">Konfirmasi Password</label>
                         <input type="password" name="password_confirmation"
                                class="form-control @error('password_confirmation') is-invalid @enderror"
                                id="password-confirmation" {{ isset($user) ? '' : 'required' }}>
@@ -70,7 +71,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
                 </form>
             </div>
         </div>

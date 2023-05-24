@@ -13,7 +13,7 @@ class UploadController extends Controller
     {
         $storedFile = ResolveUploadAction::resolve()->execute($request);
 
-        return $this->resolveForSuccessResponseWith('File uploaded successfully', [
+        return $this->resolveForSuccessResponseWith('File berhasil diunggah.', [
             'path' => $storedFile
         ]);
     }
@@ -22,6 +22,6 @@ class UploadController extends Controller
     {
         ResolveRevertAction::resolve()->execute($request->getContent());
 
-        return $this->resolveForSuccessResponseWith('File reverted successfully');
+        return $this->resolveForSuccessResponseWith('File berhasil dikembalikan.');
     }
 }

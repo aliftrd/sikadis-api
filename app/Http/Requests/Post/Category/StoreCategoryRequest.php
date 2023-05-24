@@ -13,6 +13,13 @@ class StoreCategoryRequest extends FormRequest
         ];
     }
 
+    public function attributes()
+    {
+        return [
+            'title' => 'Judul',
+        ];
+    }
+
     public function authorize(): bool
     {
         return $this->user()->can('post.category.create');

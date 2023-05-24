@@ -19,6 +19,15 @@ class UpdatePostRequest extends FormRequest
         ];
     }
 
+    public function attributes()
+    {
+        return [
+            'category' => 'Kategori',
+            'title' => 'Judul',
+            'content' => 'Konten',
+        ];
+    }
+
     public function passedValidation(): void
     {
         $this->merge([

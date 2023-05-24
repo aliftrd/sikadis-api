@@ -14,6 +14,13 @@ class UpdateAcademicYearRequest extends FormRequest
         ];
     }
 
+    public function attributes()
+    {
+        return [
+            'year' => 'Tahun'
+        ];
+    }
+
     public function authorize(): bool
     {
         return $this->user()->can('academic.year.edit');

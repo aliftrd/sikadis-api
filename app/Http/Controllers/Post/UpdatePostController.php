@@ -27,6 +27,6 @@ class UpdatePostController extends Controller
     {
         UpdatePostAction::resolve()->execute($request, $post);
 
-        return $this->resolveForRedirectResponseWith('admin.posts.index', FlashType::SUCCESS, 'Post updated successfully.');
+        return $this->resolveForRedirectResponseWith('admin.posts.index', FlashType::SUCCESS, 'Post berhasil diperbarui.');
     }
 }

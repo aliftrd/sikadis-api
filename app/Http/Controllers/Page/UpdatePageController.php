@@ -26,6 +26,6 @@ class UpdatePageController extends Controller
     {
         UpdatePageAction::resolve()->execute($request, $page);
 
-        return $this->resolveForRedirectResponseWith('admin.pages.index', FlashType::SUCCESS, 'Page updated successfully');
+        return $this->resolveForRedirectResponseWith('admin.pages.index', FlashType::SUCCESS, 'Halaman berhasil diperbarui.');
     }
 }

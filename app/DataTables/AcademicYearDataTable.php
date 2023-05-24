@@ -54,6 +54,9 @@ class AcademicYearDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+            ->parameters([
+                'language' => ['url' => asset('vendor/datatables/plugins/Indonesian.json')]
+            ])
             ->setTableId('academic-year-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -76,12 +79,12 @@ class AcademicYearDataTable extends DataTable
             Column::make('year')->title('Tahun Ajaran'),
             Column::make('ppdb')->title('PPDB'),
             Column::make('status'),
-            Column::make('updated_at')->title('Last Updated'),
+            Column::make('updated_at')->title('Terakhir diubah'),
             Column::computed('action')
+                ->title('Aksi')
                 ->exportable(false)
                 ->printable(false)
-                ->width(150)
-                ->addClass('text-center'),
+                ->width(150),
         ];
     }
 

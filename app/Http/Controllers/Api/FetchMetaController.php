@@ -12,6 +12,6 @@ class FetchMetaController extends Controller
     {
         $contacts = FetchSettingAction::resolve()->execute([SettingPrefix::CONTACT])->toArray();
 
-        return $this->resolveForSuccessResponseWith('Successful fetch data.', $contacts);
+        return $this->resolveForSuccessResponseWith('Berhasil mengambil data.', $contacts);
     }
 }

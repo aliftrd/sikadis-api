@@ -8,7 +8,7 @@
                     <h1 class="card-title">Posts</h1>
                     @can('post.create')
                         <a href="{{ route('admin.posts.create') }}" class="btn btn-sm btn-primary mb-4 mx-2">
-                            <i class="fas fa-plus mr-2"></i> Create
+                            <i class="fas fa-plus mr-2"></i> Buat baru
                         </a>
                     @endcan
                 </div>

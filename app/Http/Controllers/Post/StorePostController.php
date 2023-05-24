@@ -26,6 +26,6 @@ class StorePostController extends Controller
     {
         StorePostAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('admin.posts.index', FlashType::SUCCESS, 'Post created successfully.');
+        return $this->resolveForRedirectResponseWith('admin.posts.index', FlashType::SUCCESS, 'Post berhasil ditambahkan.');
     }
 }

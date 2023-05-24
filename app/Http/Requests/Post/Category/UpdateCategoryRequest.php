@@ -13,6 +13,13 @@ class UpdateCategoryRequest extends FormRequest
         ];
     }
 
+    public function attributes()
+    {
+        return [
+            'title' => 'Judul',
+        ];
+    }
+
 
     public function authorize(): bool
     {

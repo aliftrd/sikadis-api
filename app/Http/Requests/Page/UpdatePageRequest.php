@@ -19,6 +19,15 @@ class UpdatePageRequest extends FormRequest
             'priority' => ['nullable'],
         ];
     }
+    
+    public function attributes()
+    {
+        return [
+            'title' => 'Judul',
+            'content' => 'Konten',
+            'priority' => 'Prioritas',
+        ];
+    }
 
     public function passedValidation(): void
     {

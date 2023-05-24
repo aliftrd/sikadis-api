@@ -1,10 +1,11 @@
-@extends('layouts.auth', ['title' => isset($post) ? 'Update Post' : 'Create Post'])
+@props(['title' => isset($post) ? 'Update Post' : 'Buat Post'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ isset($post) ? 'Update Post' : 'Create Post' }}</h1>
+                <h1 class="card-title">{{ $title }}</h1>
                 <form
                     action="{{ isset($post) ? route('admin.posts.update', $post->id) : route('admin.posts.store') }}"
                     method="POST">
@@ -15,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Judul</label>
                                 <input type="text" name="title" id="title"
                                        class="form-control @error('title') is-invalid @enderror"
                                        value="{{ old('title', isset($post) ? $post->title : '') }}" required>
@@ -25,7 +26,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="content">Content</label>
+                                <label for="content">Konten</label>
                                 <x-ckeditor id="content"
                                             name="content"
                                             required>{{ old('content', isset($post) ? $post->content : '') }}</x-ckeditor>
@@ -38,7 +39,7 @@
                             <div class="form-group">
                                 @isset($post)
                                     <div class="mb-4">
-                                        <label for="preview">Preview</label>
+                                        <label for="preview">Pratinjau</label>
                                         <x-lazy-image :src="$post->getMainImageUrlAttribute()"
                                                       class="img-fluid"
                                                       alt="Preview"/>
@@ -55,17 +56,16 @@
                                 @else
                                     @isset($post)
                                         <small class="text-muted">
-                                            *Doesn't need to be filled in if you do not want to
-                                            change.
+                                            *Kosongkan jika tidak ingin mengubah
                                         </small>
                                     @endisset
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="category">Category</label>
+                                <label for="category">Kategori</label>
                                 <select class="form-control @error('category') is-invalid @enderror" name="category"
                                         id="category" required>
-                                    <option value="" selected disabled>-- Select Category --</option>
+                                    <option value="" selected disabled>-- Pilih Kategori --</option>
                                     @foreach($categories as $category)
                                         <option
                                             value="{{ $category->id }}"

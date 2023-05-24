@@ -49,6 +49,9 @@ class SlidersDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+            ->parameters([
+                'language' => ['url' => asset('vendor/datatables/plugins/Indonesian.json')]
+            ])
             ->setTableId('slider-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -68,14 +71,14 @@ class SlidersDataTable extends DataTable
     {
         return [
             Column::make('id')->title('#'),
-            Column::make('title'),
+            Column::make('title')->title('Judul'),
             Column::make('image')->className('w-25'),
-            Column::make('updated_at')->title('Last Update'),
+            Column::make('updated_at')->title('Terakhir diubah'),
             Column::computed('action')
+                ->title('Aksi')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+                ->width(60),
         ];
     }
 

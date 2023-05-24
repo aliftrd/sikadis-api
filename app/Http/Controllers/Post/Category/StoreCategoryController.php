@@ -23,6 +23,6 @@ class StoreCategoryController extends Controller
     {
         StoreCategoryAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('admin.posts.categories.index', FlashType::SUCCESS, 'Category created successfully.');
+        return $this->resolveForRedirectResponseWith('admin.posts.categories.index', FlashType::SUCCESS, 'Kategori berhasil ditambahkan.');
     }
 }

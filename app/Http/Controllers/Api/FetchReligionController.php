@@ -11,6 +11,6 @@ class FetchReligionController extends Controller
     {
         $religions = ReligionType::cases();
 
-        return $this->resolveForSuccessResponseWith('Fetch religions success', $religions);
+        return $this->resolveForSuccessResponseWith('Berhasil mengambil data.', $religions);
     }
 }

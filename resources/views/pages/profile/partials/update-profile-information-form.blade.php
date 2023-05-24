@@ -1,22 +1,23 @@
 <div class="card">
     <div class="card-body">
-        <h1 class="card-title">Edit Profile</h1>
+        <h1 class="card-title">Edit Profil</h1>
 
         @if($status)
             <div class="alert alert-success">
                 <i class="fas fa-check-circle mr-2"></i>
-                <span class="text-dark">A new verification link has been sent to your email address.</span>
+                <span class="text-dark">Link verifikasi baru telah dikirim ke alamat email Anda.</span>
             </div>
         @endif
 
         @if($mustVerifyEmail && auth()->user()->email_verified_at == null)
             <div class="alert alert-warning">
                 <i class="fas fa-exclamation-triangle mr-2"></i>
-                <span class="text-dark">Your email address is not verified.</span>
+                <span class="text-dark">Anda belum memverifikasi alamat email Anda.  </span>
                 <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                     @csrf
                     <button type="submit"
-                            class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>
+                            class="btn btn-link p-0 m-0 align-baseline">Klik di sini untuk meminta link verifikasi baru.
+                    </button>
                 </form>
             </div>
         @endif
@@ -26,7 +27,7 @@
             @method('PATCH')
 
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Nama</label>
                 <input type="text" id="name" name="name" value="{{ old('name', auth()->user()->name) }}"
                        class="form-control @error('name') is-invalid @enderror" required>
                 @error('name')
@@ -43,7 +44,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary">Kirim</button>
         </form>
 
     </div>

@@ -1,10 +1,11 @@
-@extends('layouts.auth', ['title' => isset($role) ? 'Update Role' : 'Create Role'])
+@props(['title' => isset($role) ? 'Update Role' : 'Buat Role'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ isset($role) ? 'Update Role' : 'Create Role' }}</h1>
+                <h1 class="card-title">{{ $title }}</h1>
                 <form action="{{ isset($role) ? route('admin.roles.update', $role->id) : route('admin.roles.store') }}"
                       method="POST">
                     @csrf
@@ -13,7 +14,7 @@
                     @endisset
 
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Nama</label>
                         <input type="text" name="name" id="name"
                                class="form-control @error('name') is-invalid @enderror"
                                value="{{ isset($role) ? $role->name : old('name') }}" required>
@@ -41,7 +42,7 @@
                         </div>
                     @endempty
 
-                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
                 </form>
             </div>
         </div>

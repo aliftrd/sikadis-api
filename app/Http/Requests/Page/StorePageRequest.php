@@ -20,6 +20,15 @@ class StorePageRequest extends FormRequest
         ];
     }
 
+    public function attributes()
+    {
+        return [
+            'title' => 'Judul',
+            'content' => 'Konten',
+            'priority' => 'Prioritas',
+        ];
+    }
+
     public function passedValidation(): void
     {
         $this->merge([

@@ -39,7 +39,7 @@ class LandingController extends Controller
     {
         $posts = FetchPostsAction::resolve()->execute()->response()->getData();
 
-        return view('pages.landing.all-news', compact('posts'));
+        return view('pages.landing.news', compact('posts'));
     }
 
     public function singleNews(Post $post)

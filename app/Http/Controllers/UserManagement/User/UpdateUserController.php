@@ -30,11 +30,11 @@ class UpdateUserController extends Controller
         try {
             UpdateUserAction::resolve()->execute($request, $user);
 
-            return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::SUCCESS, 'User updated successfully.');
+            return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::SUCCESS, 'User berhasil diperbarui.');
         } catch (\Exception $e) {
             $message = match (true) {
                 $e instanceof CannotDeleteLastAdminException => $e->getMessage(),
-                default => 'Something went wrong.',
+                default => 'Terjadi kesalahan saat memperbarui user.',
             };
 
             return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::ERROR, $message);

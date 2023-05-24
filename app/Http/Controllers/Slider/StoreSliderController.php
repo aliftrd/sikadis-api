@@ -23,6 +23,6 @@ class StoreSliderController extends Controller
     {
         StoreSliderAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('admin.sliders.index', FlashType::SUCCESS, 'Slider created successfully');
+        return $this->resolveForRedirectResponseWith('admin.sliders.index', FlashType::SUCCESS, 'Slider berhasil ditambahkan.');
     }
 }

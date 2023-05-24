@@ -15,8 +15,8 @@ class DestroyRoleAction extends Action
     public function execute(Role $role): void
     {
         $defaultRoleSetting = Setting::prefix(SettingPrefix::SYSTEM)->variable('DEFAULT_ROLE')->first()->value;
-        throw_if($role->id == 1, CannotDeleteAdminRoleException::class, 'You cannot delete this role.');
-        throw_if($role->id == $defaultRoleSetting, RoleUsedForDefaultRoleException::class, 'This role cannot be deleted, please change the default role first.');
+        throw_if($role->id == 1, CannotDeleteAdminRoleException::class, 'Role ini tidak dapat dihapus.');
+        throw_if($role->id == $defaultRoleSetting, RoleUsedForDefaultRoleException::class, 'Role ini digunakan sebagai role default.');
 
         $defaultRole = Role::find($defaultRoleSetting);
         User::role($role->id)->each(fn($user) => $user->syncRoles($defaultRole->name));

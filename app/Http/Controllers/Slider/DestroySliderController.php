@@ -18,6 +18,6 @@ class DestroySliderController extends Controller
     {
         DestroySliderAction::resolve()->execute($slider);
 
-        return $this->resolveForRedirectResponseWith('admin.sliders.index', FlashType::SUCCESS, 'Slider deleted successfully');
+        return $this->resolveForRedirectResponseWith('admin.sliders.index', FlashType::SUCCESS, 'Slider berhasil dihapus.');
     }
 }

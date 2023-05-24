@@ -1,10 +1,11 @@
-@extends('layouts.auth', ['title' => isset($slider) ? 'Update Slider' : 'Create Slider'])
+@props(['title' => isset($slider) ? 'Update Slider' : 'Buat Slider'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ isset($slider) ? 'Update Slider' : 'Create Slider' }}</h1>
+                <h1 class="card-title">{{ $title }}</h1>
                 <form
                     action="{{ isset($slider) ? route('admin.sliders.update', $slider->id) : route('admin.sliders.store') }}"
                     method="POST">
@@ -14,7 +15,7 @@
                     @endisset
 
                     <div class="form-group">
-                        <label for="title">Title</label>
+                        <label for="title">Judul</label>
                         <input type="text" name="title" id="title"
                                class="form-control @error('title') is-invalid @enderror"
                                value="{{ old('title', isset($slider) ? $slider->title : '') }}" required>
@@ -24,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="image">Image</label>
+                        <label for="image">Gambar</label>
                         <x-filepond name="image" id="image"
                                     class="@error('image') is-invalid @enderror"
                                     required="{{ !isset($slider) ? 'true' : 'false' }}"
@@ -35,14 +36,13 @@
                         @else
                             @isset($slider)
                                 <small class="text-muted">
-                                    *Doesn't need to be filled in if you do not want to
-                                    change.
+                                    *Kosongkan jika tidak ingin mengubah
                                 </small>
                             @endisset
                         @endif
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
                 </form>
             </div>
         </div>

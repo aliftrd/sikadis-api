@@ -25,6 +25,11 @@ class SettingController extends Controller
                 'title' => 'required|string|max:255',
                 'keywords' => 'required|string|max:255',
                 'description' => 'required|string|max:255',
+            ], [], [
+                'logo' => 'Logo',
+                'title' => 'Title',
+                'keywords' => 'Keywords',
+                'description' => 'Description',
             ]);
 
             if ($validator->fails()) {
@@ -45,6 +50,8 @@ class SettingController extends Controller
         if ($request->isMethod('PATCH')) {
             $validator = \Validator::make($request->except(['_method', '_token']), [
                 'kata_sambutan' => 'required|string',
+            ], [], [
+                'kata_sambutan' => 'Kata Sambutan',
             ]);
 
             if ($validator->fails()) return back()->withErrors($validator)->withInput();
@@ -65,6 +72,11 @@ class SettingController extends Controller
                 'jam_kantor' => 'required|string',
                 'phone' => 'required|string',
                 'email' => 'required|email',
+            ], [], [
+                'pusat_bantuan' => 'Pusat Bantuan',
+                'jam_kantor' => 'Jam Kantor',
+                'phone' => 'Phone',
+                'email' => 'Email',
             ]);
 
             if ($validator->fails()) return back()->withErrors($validator)->withInput();

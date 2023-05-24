@@ -7,7 +7,7 @@
             @method('PATCH')
 
             <div class="form-group">
-                <label for="current-password">Current Password</label>
+                <label for="current-password">Password saat ini</label>
                 <input type="password" name="current_password" id="current-password"
                        class="form-control @error('current_password') is-invalid @enderror" required>
                 @error('current_password')
@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-group">
-                <label for="new-password">New Password</label>
+                <label for="new-password">Password baru</label>
                 <input type="password" name="password" id="new-password"
                        class="form-control @error('password') is-invalid @enderror" required>
                 @error('password')
@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
+                <label for="confirm-password">Konfirmasi Password</label>
                 <input type="password" name="password_confirmation" id="confirm-password"
                        class="form-control @error('password_confirmation') is-invalid @enderror" required>
                 @error('password_confirmation')
@@ -33,7 +33,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary">Kirim</button>
         </form>
     </div>
 </div>

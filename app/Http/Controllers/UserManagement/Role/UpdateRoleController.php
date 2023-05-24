@@ -28,6 +28,6 @@ class UpdateRoleController extends Controller
     {
         UpdateRoleAction::resolve()->execute($request, $role);
 
-        return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::SUCCESS, 'Role updated successfully');
+        return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::SUCCESS, 'Role berhasil diperbarui.');
     }
 }

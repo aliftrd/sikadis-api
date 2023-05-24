@@ -24,6 +24,6 @@ class StorePageController extends Controller
     {
         StorePageAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('admin.pages.index', FlashType::SUCCESS, 'Page created successfully.');
+        return $this->resolveForRedirectResponseWith('admin.pages.index', FlashType::SUCCESS, 'Halaman berhasil ditambahkan.');
     }
 }

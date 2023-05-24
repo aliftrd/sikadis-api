@@ -18,6 +18,6 @@ class DestroyPostController extends Controller
     {
         DestroyPostAction::resolve()->execute($post);
 
-        return $this->resolveForRedirectResponseWith('admin.posts.index', FlashType::SUCCESS, 'Post deleted successfully.');
+        return $this->resolveForRedirectResponseWith('admin.posts.index', FlashType::SUCCESS, 'Post berhasil dihapus.');
     }
 }

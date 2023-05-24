@@ -36,7 +36,10 @@
                             <div class="row">
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="nik" class="col-md-4 col-form-label">NIK</label>
+                                        <label for="nik" class="col-md-4 col-form-label">
+                                            NIK
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="number"
                                                    class="form-control @error('nik') is-invalid @enderror"
@@ -51,7 +54,10 @@
                                 </div>
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="fullname" class="col-md-4 col-form-label">Nama Lengkap</label>
+                                        <label for="fullname" class="col-md-4 col-form-label">
+                                            Nama Lengkap
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="text"
                                                    class="form-control @error('fullname') is-invalid @enderror"
@@ -68,7 +74,10 @@
                             <div class="row">
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="birthplace" class="col-md-4 col-form-label">Tempat Lahir</label>
+                                        <label for="birthplace" class="col-md-4 col-form-label">
+                                            Tempat Lahir
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="text"
                                                    class="form-control @error('birthplace') is-invalid @enderror"
@@ -83,8 +92,10 @@
                                 </div>
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="birthdate" class="col-md-4 col-form-label">Tanggal Tahun
-                                            Lahir</label>
+                                        <label for="birthdate" class="col-md-4 col-form-label">
+                                            Tanggal Tahun Lahir
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="date"
                                                    class="form-control @error('birthdate') is-invalid @enderror"
@@ -99,7 +110,10 @@
                                 </div>
                             </div>
                             <div class="mb-3 row align-items-center">
-                                <label for="gender" class="col-md-2 col-form-label">Jenis Kelamin</label>
+                                <label for="gender" class="col-md-2 col-form-label">
+                                    Jenis Kelamin
+                                    <span class="text-danger">*</span>
+                                </label>
                                 <div class="col-md-10">
                                     @foreach(\App\Enums\GenderType::cases() as $gender)
                                         <div class="form-check form-check-inline">
@@ -117,7 +131,10 @@
                                 </div>
                             </div>
                             <div class="mb-3 row align-items-center">
-                                <label for="religion" class="col-md-2 col-form-label">Agama</label>
+                                <label for="religion" class="col-md-2 col-form-label">
+                                    Agama
+                                    <span class="text-danger">*</span>
+                                </label>
                                 <div class="col-md-10">
                                     <select class="form-control @error('birthplace') is-invalid @enderror"
                                             name="religion"
@@ -136,7 +153,10 @@
                             <div class="row">
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="father_name" class="col-md-4 col-form-label">Nama Ayah</label>
+                                        <label for="father_name" class="col-md-4 col-form-label">
+                                            Nama Ayah
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="text"
                                                    class="form-control @error('father_name') is-invalid @enderror"
@@ -149,8 +169,10 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row align-items-center">
-                                        <label for="father_occupation" class="col-md-4 col-form-label">Pekerjaan
-                                            Ayah</label>
+                                        <label for="father_occupation" class="col-md-4 col-form-label">
+                                            Pekerjaan Ayah
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="text"
                                                    class="form-control @error('father_occupation') is-invalid @enderror"
@@ -165,7 +187,10 @@
                                 </div>
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="mother_name" class="col-md-4 col-form-label">Nama Ibu</label>
+                                        <label for="mother_name" class="col-md-4 col-form-label">
+                                            Nama Ibu
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="col-md-8">
                                             <input type="text"
                                                    class="form-control @error('mother_name') is-invalid @enderror"
@@ -180,7 +205,6 @@
                                     <div class="mb-3 row align-items-center">
                                         <label for="mother_occupation" class="col-md-4 col-form-label">
                                             Pekerjaan Ibu
-                                            <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-md-8">
                                             <input type="text"
@@ -212,7 +236,6 @@
                                     <div class="mb-3 row align-items-center">
                                         <label for="guardian_name" class="col-md-4 col-form-label">
                                             Nama Wali
-                                            <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-md-8">
                                             <input type="text"
@@ -229,7 +252,6 @@
                                     <div class="mb-3 row align-items-center">
                                         <label for="guardian_occupation" class="col-md-4 col-form-label">
                                             Pekerjaan Wali
-                                            <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-md-8">
                                             <input type="text"
@@ -246,7 +268,6 @@
                             <div class="mb-3 row align-items-center">
                                 <label for="guardian_address" class="col-md-2 col-form-label">
                                     Alamat Wali
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-md-10">
                                     <input type="text"
@@ -262,7 +283,6 @@
                             <div class="mb-3 row align-items-center">
                                 <label for="files" class="col-md-2 col-form-label">
                                     File Pendukung
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-md-10">
                                     <input type="file"

@@ -11,8 +11,8 @@ class ResolveUploadAction extends Action
     {
         $files = $request->allFiles();
 
-        abort_if(empty($files), 422, 'No file uploaded');
-        abort_if(count($files) > 1, 422, 'Only 1 file can be uploaded at a time.');
+        abort_if(empty($files), 422, 'Tidak ada file yang diupload.');
+        abort_if(count($files) > 1, 422, 'Hanya boleh mengupload satu file.');
 
         $requestKey = array_key_first($files);
 

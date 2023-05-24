@@ -1,10 +1,11 @@
-@extends('layouts.auth', ['title' => isset($page) ? 'Update Page' : 'Create Page'])
+@props(['title' => isset($page) ? 'Update Halaman' : 'Buat Halaman'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ isset($page) ? 'Update Page' : 'Create Page' }}</h1>
+                <h1 class="card-title">{{ $title }}</h1>
                 <form
                     action="{{ isset($page) ? route('admin.pages.update', $page->id) : route('admin.pages.store') }}"
                     method="POST">
@@ -16,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Judul</label>
                                 <input type="text" name="title" id="title"
                                        class="form-control @error('title') is-invalid @enderror"
                                        value="{{ old('title', isset($page) ? $page->title : '') }}" required>
@@ -26,7 +27,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="content">Content</label>
+                                <label for="content">Konten</label>
                                 <x-ckeditor id="content"
                                             name="content"
                                             required>{{ old('content', isset($page) ? $page->content : '') }}</x-ckeditor>
@@ -39,7 +40,7 @@
                             <div class="form-group">
                                 @isset($page)
                                     <div class="mb-4">
-                                        <label for="preview">Preview</label>
+                                        <label for="preview">Pratinjau</label>
                                         <x-lazy-image :src="$page->getMainImageUrlAttribute()"
                                                       class="img-fluid"
                                                       alt="Preview"/>
@@ -56,8 +57,7 @@
                                 @else
                                     @isset($page)
                                         <small class="text-muted">
-                                            *Doesn't need to be filled in if you do not want to
-                                            change.
+                                            *Kosongkan jika tidak ingin mengubah
                                         </small>
                                     @endisset
                                 @endif
@@ -67,7 +67,7 @@
                                     <input type="checkbox" class="custom-control-input" name="priority"
                                            id="customSwitch1"
                                         {{ old('priority', isset($page) && $page->priority) == 1 ? 'checked' : '' }}>
-                                    <label class="custom-control-label" for="customSwitch1">Priority</label>
+                                    <label class="custom-control-label" for="customSwitch1">Prioritas</label>
                                 </div>
                             </div>
                         </div>

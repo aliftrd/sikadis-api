@@ -1,14 +1,15 @@
-@extends('layouts.auth', ['title' => 'Categories'])
+@props(['title' => 'Kategori'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="card-title">Categories</h1>
+                    <h1 class="card-title">{{ $title }}</h1>
                     @can('post.category.create')
                         <a href="{{ route('admin.posts.categories.create') }}" class="btn btn-sm btn-primary mb-4 mx-2">
-                            <i class="fas fa-plus mr-2"></i> Create
+                            <i class="fas fa-plus mr-2"></i> Buat baru
                         </a>
                     @endcan
                 </div>

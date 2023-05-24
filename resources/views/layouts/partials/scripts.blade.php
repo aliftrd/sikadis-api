@@ -23,15 +23,16 @@
                 event.preventDefault();
                 const button = $(this).find('button[type=submit]').attr('disabled', true);
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Apakah kamu yakin ingin menghapus data ini?',
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
                     icon: 'warning',
                     showCancelButton: true,
                     customClass: {
                         confirmButton: 'btn btn-danger',
                         cancelButton: 'btn btn-secondary'
                     },
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
                 }).then((result) => {
                     if (!result.isConfirmed) {
                         return button.attr('disabled', false);
@@ -44,13 +45,15 @@
                 event.preventDefault();
                 const button = $(this).find('button[type=submit]').attr('disabled', true);
                 Swal.fire({
-                    title: 'Are you sure you want to continue this action?',
+                    title: 'Apakah kamu yakin ingin melakukan aksi ini?',
                     icon: 'warning',
                     showCancelButton: true,
                     customClass: {
                         confirmButton: 'btn btn-danger',
                         cancelButton: 'btn btn-secondary'
                     },
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
                 }).then((result) => {
                     if (!result.isConfirmed) {
                         return button.attr('disabled', false);

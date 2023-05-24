@@ -12,10 +12,10 @@ class StoreStudentCandidateController extends Controller
     public function __invoke(StoreStudentCandidateRequest $request)
     {
         $academicYear = FetchActiveAcademicYearAction::resolve()->execute();
-        if (!$academicYear->ppdb) return $this->resolveForFailedResponseWith('PPDB is not open yet.', [], 403);
+        if (!$academicYear->ppdb) return $this->resolveForFailedResponseWith('PPDB masih belum dibuka. Silahkan hubungi admin untuk informasi lebih lanjut.', [], 403);
 
         StoreStudentCandidateAction::resolve()->execute($request);
 
-        return $this->resolveForSuccessResponseWith('Successful registration, please wait for further information.', [], 201);
+        return $this->resolveForSuccessResponseWith('Berhasil mendaftar. Silahkan tunggu informasi selanjutnya.', [], 201);
     }
 }

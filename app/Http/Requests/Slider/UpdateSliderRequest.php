@@ -17,6 +17,14 @@ class UpdateSliderRequest extends FormRequest
         ];
     }
 
+    public function attributes()
+    {
+        return [
+            'title' => 'Judul',
+            'image' => 'Gambar',
+        ];
+    }
+
     public function failedValidation(Validator $validator): void
     {
         ResolveRevertAction::resolve()->execute($this->image);

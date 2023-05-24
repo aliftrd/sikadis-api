@@ -11,7 +11,7 @@ class FetchPpdbController extends Controller
     {
         $academicYear = FetchActiveAcademicYearAction::resolve()->execute();
 
-        return $this->resolveForSuccessResponseWith('Successful fetch data.', [
+        return $this->resolveForSuccessResponseWith('Berhasil mengambil data.', [
             'academic_year' => $academicYear->year,
             'ppdb' => $academicYear->ppdb,
             'status' => $academicYear->status,

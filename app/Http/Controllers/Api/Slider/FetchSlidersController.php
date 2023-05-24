@@ -11,6 +11,6 @@ class FetchSlidersController extends Controller
     {
         $sliders = (FetchSlidersAction::resolve()->execute())->response()->getData();
 
-        return $this->resolveForSuccessResponseWith('Fetch sliders successfully', compact('sliders'), 200);
+        return $this->resolveForSuccessResponseWith('Berhasil mengambil data.', compact('sliders'), 200);
     }
 }

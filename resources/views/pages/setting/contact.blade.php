@@ -1,10 +1,11 @@
-@extends('layouts.auth', ['title' => 'Contact Setting'])
+@props(['title' => 'Kontak'])
+@extends('layouts.auth', ['title' => $title])
 
 @section('content')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ 'Contact Setting' }}</h1>
+                <h1 class="card-title">{{ $title }}</h1>
                 <form action="{{ route('admin.settings.contact.update') }}" method="POST">
                     @method('PATCH')
                     @csrf
@@ -55,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary">Kirim</button>
                 </form>
             </div>
         </div>

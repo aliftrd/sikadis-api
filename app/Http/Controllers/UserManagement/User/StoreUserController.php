@@ -26,6 +26,6 @@ class StoreUserController extends Controller
     {
         StoreUserAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::SUCCESS, 'User created successfully.');
+        return $this->resolveForRedirectResponseWith('admin.users.index', FlashType::SUCCESS, 'User berhasil ditambahkan.');
     }
 }

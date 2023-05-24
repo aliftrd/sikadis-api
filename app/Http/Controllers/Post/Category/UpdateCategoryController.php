@@ -24,6 +24,6 @@ class UpdateCategoryController extends Controller
     {
         UpdateCategoryAction::resolve()->execute($request, $category);
 
-        return $this->resolveForRedirectResponseWith('admin.posts.categories.index', FlashType::SUCCESS, 'Category updated successfully.');
+        return $this->resolveForRedirectResponseWith('admin.posts.categories.index', FlashType::SUCCESS, 'Kategori berhasil diperbarui.');
     }
 }

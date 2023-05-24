@@ -21,11 +21,11 @@ class DestroyRoleController extends Controller
         try {
             DestroyRoleAction::resolve()->execute($role);
 
-            return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::SUCCESS, 'Role deleted successfully');
+            return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::SUCCESS, 'Role berhasil dihapus.');
         } catch (\Exception $e) {
             $message = match (true) {
                 $e instanceof CannotDeleteAdminRoleException, $e instanceof RoleUsedForDefaultRoleException => $e->getMessage(),
-                default => 'Something went wrong',
+                default => 'Terjadi kesalahan saat menghapus role.',
             };
 
             return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::ERROR, $message);

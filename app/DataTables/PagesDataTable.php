@@ -50,6 +50,9 @@ class PagesDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+            ->parameters([
+                'language' => ['url' => asset('vendor/datatables/plugins/Indonesian.json')]
+            ])
             ->setTableId('pages-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -69,14 +72,14 @@ class PagesDataTable extends DataTable
     {
         return [
             Column::make('id')->title('#'),
-            Column::make('title'),
+            Column::make('title')->title('Judul'),
             Column::make('status'),
-            Column::make('updated_at')->title('Last Updated'),
+            Column::make('updated_at')->title('Terakhir diubah'),
             Column::computed('action')
+                ->title('Aksi')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+                ->width(60),
         ];
     }
 

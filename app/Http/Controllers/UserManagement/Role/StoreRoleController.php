@@ -26,6 +26,6 @@ class StoreRoleController extends Controller
     {
         StoreRoleAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::SUCCESS, 'Role created successfully');
+        return $this->resolveForRedirectResponseWith('admin.roles.index', FlashType::SUCCESS, 'Role berhasil ditambahkan.');
     }
 }

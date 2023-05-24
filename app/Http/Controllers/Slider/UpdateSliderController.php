@@ -24,6 +24,6 @@ class UpdateSliderController extends Controller
     {
         UpdateSliderAction::resolve()->execute($request, $slider);
 
-        return $this->resolveForRedirectResponseWith('admin.sliders.index', FlashType::SUCCESS, 'Slider updated successfully');
+        return $this->resolveForRedirectResponseWith('admin.sliders.index', FlashType::SUCCESS, 'Slider berhasil diperbarui.');
     }
 }

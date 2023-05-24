@@ -18,6 +18,6 @@ class DestroyPageController extends Controller
     {
         DestroyPageAction::resolve()->execute($page);
 
-        return $this->resolveForRedirectResponseWith('admin.pages.index', FlashType::SUCCESS, 'Page deleted successfully');
+        return $this->resolveForRedirectResponseWith('admin.pages.index', FlashType::SUCCESS, 'Halaman berhasil dihapus.');
     }
 }

@@ -18,6 +18,6 @@ class DestroyCategoryController extends Controller
     {
         DestroyCategoryAction::resolve()->execute($category);
 
-        return $this->resolveForRedirectResponseWith('admin.posts.categories.index', FlashType::SUCCESS, 'Category deleted successfully.');
+        return $this->resolveForRedirectResponseWith('admin.posts.categories.index', FlashType::SUCCESS, 'Kategori berhasil dihapus.');
     }
 }

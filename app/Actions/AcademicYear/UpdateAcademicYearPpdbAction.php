@@ -10,7 +10,7 @@ class UpdateAcademicYearPpdbAction extends Action
 {
     public function execute(AcademicYear $academicYear): void
     {
-        throw_unless($academicYear->status, CannotUpdateCauseAcademicYearNonactiveException::class, 'Academic year is not active');
+        throw_unless($academicYear->status, CannotUpdateCauseAcademicYearNonactiveException::class, 'Tahun ajaran tidak aktif.');
 
         $academicYear->update(['ppdb' => !$academicYear->ppdb]);
     }

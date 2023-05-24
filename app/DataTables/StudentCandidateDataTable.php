@@ -41,6 +41,9 @@ class StudentCandidateDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+            ->parameters([
+                'language' => ['url' => asset('vendor/datatables/plugins/Indonesian.json')]
+            ])
             ->setTableId('student-candidate-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -48,10 +51,6 @@ class StudentCandidateDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
             ]);
@@ -64,13 +63,14 @@ class StudentCandidateDataTable extends DataTable
     {
         return [
             Column::make('id')->title('#'),
-            Column::make('fullname'),
-            Column::make('updated_at')->title('Last Updated'),
+            Column::make('nik'),
+            Column::make('fullname')->title('Nama Lengkap'),
+            Column::make('updated_at')->title('Terakhir diubah'),
             Column::computed('action')
+                ->title('Aksi')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+                ->width(60),
         ];
     }
 

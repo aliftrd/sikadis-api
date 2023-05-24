@@ -19,8 +19,7 @@
                         <i class="fas fa-user mr-2"></i> {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a class="dropdown-item" href="{{ route('admin.profile.edit') }}">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.profile.edit') }}">Akun</a></li>
                         <li class="divider"></li>
                         <li>
                             <a onclick="document.getElementById('form-logout').submit()" class="dropdown-item" href="#">Log
