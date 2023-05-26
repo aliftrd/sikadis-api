@@ -28,7 +28,7 @@ Route::group(['as' => 'landing.'], function () {
 });
 
 Auth::routes([
-    'register' => true,
+    'register' => false,
     'reset' => true,
     'verify' => true,
 ]);
