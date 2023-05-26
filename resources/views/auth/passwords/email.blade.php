@@ -1,9 +1,9 @@
-@extends('layouts.guest', ['title' => 'Reset Password'])
+@extends('layouts.guest', ['title' => 'Lupa password'])
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h1 class="card-title">{{ __('Reset Password') }}</h1>
+            <h1 class="card-title">{{ __('Lupa password') }}</h1>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
@@ -14,7 +14,7 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="email">{{ __('Email Address') }}</label>
+                    <label for="email">Email</label>
                     <input id="email" type="email"
                            class="form-control @error('email') is-invalid @enderror" name="email"
                            value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -24,7 +24,8 @@
                 </div>
 
                 <button type="submit"
-                        class="btn btn-lg btn-primary btn-block">{{ __('Send Password Reset Link') }}</button>
+                        class="btn btn-lg btn-primary btn-block">Kirim link reset password
+                </button>
             </form>
         </div>
     </div>

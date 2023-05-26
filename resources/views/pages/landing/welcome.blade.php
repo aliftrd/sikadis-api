@@ -53,38 +53,22 @@
                         <h2 class="font-lg">Berita</h2>
                     </div>
                 </div>
-
-                <div class="col-xl-6 col-lg-7">
-                    <ul class="course-filter text-center text-lg-end">
-                        <li><a href="#"> View All</a></li>
-                    </ul>
-                </div>
             </div>
 
             <div class="row course-gallery ">
                 @forelse($posts->data as $post)
-                    <div onclick="window.location.href='{{ route('landing.single-news', $post->slug) }}'"
-                         class="course-item cat1 cat5 col-lg-6 col-md-6" style="cursor: pointer;">
-                        <div class="single-course style-2 bg-shade border-0">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-xl-5">
-                                    <div class="course-thumb"
-                                         style="background:url({{ $post->thumbnail }})">
-                                        @isset($post->category)
-                                            <span class="category">{{ $post->category }}</span>
-                                        @endisset
-                                    </div>
+                    <div class="col-xl-6" style="cursor: pointer"
+                         onclick="window.location.href='{{ route('landing.single-news', $post->slug) }}'">
+                        <div class="blog-item mb-30">
+                            <div class="post-thumb">
+                                <x-lazy-image src="{{ $post->thumbnail }}" alt="Thumbnail" class="img-fluid"/>
+                            </div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="fa fa-calendar-alt mr-2"></i>{{ $post->created_at }}</span>
                                 </div>
-                                <div class="col-xl-7">
-                                    <div class="course-content">
-                                        <h3 class="course-title">{{ $post->title }}</h3>
-                                        <div class="course-meta d-flex align-items-center">
-                                            <span class="students">
-                                                <i class="far fa-clock"></i>{{ $post->created_at }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h3 class="post-title">{{ str($post->title)->limit(40, '...') }}</h3>
+                                {!! str($post->content)->limit(70, '...') !!}
                             </div>
                         </div>
                     </div>

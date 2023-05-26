@@ -24,7 +24,7 @@ class SettingController extends Controller
                 'logo' => ['nullable', 'string', new ValidFileUploadRule(['image/jpeg', 'image/png'])],
                 'title' => 'required|string|max:255',
                 'keywords' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
+                'description' => 'required|string',
             ], [], [
                 'logo' => 'Logo',
                 'title' => 'Title',

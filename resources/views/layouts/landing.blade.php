@@ -5,7 +5,8 @@
     <meta name="description" content="{{ $WEBSITE_DESCRIPTION }}">
     <meta name="keywords"
           content="{{ $WEBSITE_KEYWORDS }}">
-    <meta name="author" content="dreambuzz">
+    <link rel="shortcut icon" href="{{ asset('storage/' . $WEBSITE_LOGO) }}" type="image/x-icon">
+    <meta name="author" content="Essential Developer">
 
     <title>{{ join(' - ', [$title, $WEBSITE_TITLE ?? config('app.name', 'Laravel')]) }}</title>
 
@@ -31,7 +32,8 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div class="site-logo">
                     <a href="{{ route('landing.welcome') }}">
-                        <img src="assets/images/logo.png" alt="" class="img-fluid"/> {{ $WEBSITE_TITLE }}
+                        <img src="{{ asset('storage/' . $WEBSITE_LOGO) }}" alt="Logo {{ $WEBSITE_TITLE }}"
+                             class="img-fluid w-25"/>
                     </a>
                 </div>
 
@@ -42,18 +44,19 @@
                 <nav class="site-navbar ms-auto">
                     <ul class="primary-menu">
                         <li><a href="{{ route('landing.welcome') }}">Beranda</a></li>
-                        <li><a href="blog.html">Berita</a></li>
+                        <li><a href="{{ route('landing.news') }}">Berita</a></li>
                         @if($priority_pages->count() > 0)
                             <li>
                                 <a href="#">Halaman</a>
                                 <ul class="submenu">
                                     @foreach($priority_pages as $page)
-                                        <li><a href="instructor.html">{{ $page->title }}</a></li>
+                                        <li>
+                                            <a href="{{ route('landing.single-page', $page->slug) }}">{{ $page->title }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
                         @endif
-                        <li><a href="contact.html">Kontak</a></li>
                         @if($academic_year?->ppdb)
                             <li><a href="{{ route('landing.ppdb.index') }}">PPDB</a></li>
                         @endif
@@ -75,10 +78,12 @@
             <div class="row">
                 <div class="col-xl-8 me-auto col-sm-8">
                     <div class="footer-logo mb-3">
-                        <img src="assets/images/logo-white.png" alt="" class="img-fluid">
+                        <img src="{{ asset('storage/' . $WEBSITE_LOGO) }}" alt="Logo" class="img-fluid"
+                             style="width: 100px;">
                     </div>
                     <div class="widget footer-widget mb-5 mb-lg-0">
-                        <p>{{ $WEBSITE_DESCRIPTION }}</p>
+                        <span class="text-white font-sm fw-bold">{{ $WEBSITE_TITLE }}</span>
+                        <p class="w-75">{{ $WEBSITE_DESCRIPTION }}</p>
                     </div>
                 </div>
 
@@ -88,7 +93,8 @@
                             <h5 class="widget-title">Halaman</h5>
                             <ul class="list-unstyled footer-links">
                                 @foreach($priority_pages as $page)
-                                    <li><a href="#">{{ $page->title }}</a></li>
+                                    <li><a href="{{ route('landing.single-page', $page->slug) }}">{{ $page->title }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>

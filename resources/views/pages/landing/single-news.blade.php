@@ -42,7 +42,7 @@
                                                  class="img-fluid">
                                         </div>
                                         <div class="widget-content">
-                                            <h5>{{ $latestPost->title }}</h5>
+                                            <h5>{{ str($latestPost->title)->limit(50, '...') }}</h5>
                                             <span><i class="fa fa-calendar-times"></i>{{ $post->created_at->diffForHumans() }}</span>
                                         </div>
                                     </div>

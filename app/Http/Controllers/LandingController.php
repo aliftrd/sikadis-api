@@ -11,7 +11,10 @@ use App\Actions\StudentCandidate\StoreStudentCandidateAction;
 use App\Enums\FlashType;
 use App\Enums\SettingPrefix;
 use App\Http\Requests\StudentCandidate\StoreStudentCandidateRequest;
+use App\Models\Page;
 use App\Models\Post;
+use App\Models\StudentCandidate;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LandingController extends Controller
 {
@@ -50,6 +53,13 @@ class LandingController extends Controller
         return view('pages.landing.single-news', compact('latestPosts', 'post'));
     }
 
+    public function singlePage(Page $page)
+    {
+        $page->load('firstImage');
+
+        return view('pages.landing.single-page', compact('page'));
+    }
+
     public function ppdb()
     {
         $academicYear = FetchActiveAcademicYearAction::resolve()->execute();
@@ -63,5 +73,15 @@ class LandingController extends Controller
         StoreStudentCandidateAction::resolve()->execute($request);
 
         return $this->resolveForRedirectResponseWith('landing.ppdb.index', FlashType::SUCCESS, 'Pendaftaran berhasil dikirimkan');
+    }
+
+    public function ppdbShow(StudentCandidate $studentCandidate)
+    {
+        $studentCandidate->load('academicYear');
+
+        return Pdf::loadView('pdf.student-card', compact('studentCandidate'))
+            ->setPaper('a4', 'portrait')
+            ->setWarnings(false)
+            ->stream(join('.', [join('-', [$studentCandidate->name, 'student-card']), 'pdf']));
     }
 }

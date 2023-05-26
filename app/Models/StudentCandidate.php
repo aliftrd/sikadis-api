@@ -36,4 +36,9 @@ class StudentCandidate extends Model implements HasMedia
     protected $casts = [
         'gender' => GenderType::class,
     ];
+
+    public function academicYear()
+    {
+        return $this->belongsTo(AcademicYear::class);
+    }
 }

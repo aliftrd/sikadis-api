@@ -29,7 +29,7 @@ class StoreStudentCandidateRequest extends FormRequest
             'guardian_address' => ['nullable', 'string', 'max:255'],
             'files' => [File::types(['pdf', 'png', 'jpg', 'jpeg'])
                 ->min(0)
-                ->max(10 * 1024),],
+                ->max(2 * 1024),],
         ];
     }
 

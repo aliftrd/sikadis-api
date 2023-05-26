@@ -17,16 +17,18 @@ Route::group(['as' => 'landing.'], function () {
     Route::get('/', [App\Http\Controllers\LandingController::class, 'welcome'])->name('welcome');
     Route::get('/news', [App\Http\Controllers\LandingController::class, 'news'])->name('news');
     Route::get('/news/{post:slug}', [App\Http\Controllers\LandingController::class, 'singleNews'])->name('single-news');
+    Route::get('/p/{page:slug}', [App\Http\Controllers\LandingController::class, 'singlePage'])->name('single-page');
 
     Route::group(['prefix' => 'ppdb', 'as' => 'ppdb.'], function () {
         Route::get('/', [App\Http\Controllers\LandingController::class, 'ppdb'])->name('index');
         Route::post('/', [App\Http\Controllers\LandingController::class, 'ppdbStore'])->name('store');
+        Route::get('/{student_candidate:nik}', [App\Http\Controllers\LandingController::class, 'ppdbShow'])->name('show');
     });
 
 });
 
 Auth::routes([
-    'register' => false,
+    'register' => true,
     'reset' => true,
     'verify' => true,
 ]);

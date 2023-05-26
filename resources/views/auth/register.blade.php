@@ -1,14 +1,14 @@
-@extends('layouts.guest', ['title' => 'Register'])
+@extends('layouts.guest', ['title' => 'Daftar'])
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h1 class="card-title">{{ __('Register') }}</h1>
+            <h1 class="card-title">Daftar</h1>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
                 <div class="form-group">
-                    <label for="name">{{ __('Name') }}</label>
+                    <label for="name">Nama</label>
 
                     <input id="name" type="text"
                            class="form-control @error('name') is-invalid @enderror" name="name"
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">{{ __('Email Address') }}</label>
+                    <label for="email">Email</label>
 
                     <input id="email" type="email"
                            class="form-control @error('email') is-invalid @enderror" name="email"
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password">{{ __('Password') }}</label>
+                    <label for="password">Password</label>
 
                     <input id="password" type="password"
                            class="form-control @error('password') is-invalid @enderror" name="password"
@@ -44,15 +44,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                    <label for="password-confirm">Konfirmasi Password</label>
 
                     <input id="password-confirm" type="password" class="form-control"
                            name="password_confirmation" required autocomplete="new-password">
                 </div>
 
-                <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Daftar</button>
                 <div class="mt-4 text-center">
-                    Already have an account? <a href="{{ route('login') }}">Sign In</a>
+                    Sudah punya akun? <a href="{{ route('login') }}">Masuk</a>
                 </div>
             </form>
         </div>

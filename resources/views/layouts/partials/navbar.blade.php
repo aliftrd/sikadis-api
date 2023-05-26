@@ -20,10 +20,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" href="{{ route('admin.profile.edit') }}">Akun</a></li>
-                        <li class="divider"></li>
                         <li>
-                            <a onclick="document.getElementById('form-logout').submit()" class="dropdown-item" href="#">Log
-                                Out</a>
+                            <a onclick="document.getElementById('form-logout').submit()" class="dropdown-item" href="#">Keluar</a>
 
                             <form method="POST" action="{{ route('logout') }}" id="form-logout">
                                 @csrf
