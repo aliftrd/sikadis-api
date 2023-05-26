@@ -34,7 +34,7 @@
                             <div class="recent-posts">
                                 @foreach($latestPosts as $latestPost)
                                     <div class="single-latest-post"
-                                         onclick="window.location.href='{{ route('landing.single-news', $post->slug) }}'"
+                                         onclick="window.location.href='{{ route('landing.single-news', $latestPost->slug) }}'"
                                          style="cursor: pointer;">
                                         <div class="widget-thumb">
                                             <img src="{{ $latestPost->firstImage->original_url }}"
