@@ -7,7 +7,7 @@
                 <div class="col-lg-8 col-xl-8">
                     <div class="post-single">
                         <div class="post-thumb">
-                            <x-lazy-image src="{{ $page->firstImage->original_url }}" alt="{{ $page->title }}"
+                            <x-lazy-image src="{{ $post->firstImage->original_url }}" alt="{{ $page->title }}"
                                           class="img-fluid" style="width: 100%;object-fit: cover;"/>
                         </div>
                         <div class="blog-footer-meta mt-0 d-md-flex justify-content-between align-items-center">
