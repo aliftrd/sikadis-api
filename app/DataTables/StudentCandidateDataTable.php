@@ -22,7 +22,10 @@ class StudentCandidateDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'studentcandidate.action')
+            ->rawColumns(['action'])
+            ->addColumn('action', function (StudentCandidate $studentCandidate) {
+                return view('pages.student-candidate.columns.actions', compact('studentCandidate'));
+            })
             ->editColumn('updated_at', fn($data) => $data->updated_at->diffForHumans())
             ->setRowId('id');
     }
@@ -70,7 +73,7 @@ class StudentCandidateDataTable extends DataTable
                 ->title('Aksi')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60),
+                ->width(100),
         ];
     }
 

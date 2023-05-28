@@ -15,6 +15,8 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Models\StudentCandidate;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LandingController extends Controller
 {
@@ -75,13 +77,27 @@ class LandingController extends Controller
         return $this->resolveForRedirectResponseWith('landing.ppdb.index', FlashType::SUCCESS, 'Pendaftaran berhasil dikirimkan');
     }
 
-    public function ppdbShow(StudentCandidate $studentCandidate)
+    public function ppdbShow(Request $request)
     {
-        $studentCandidate->load('academicYear');
+        if ($request->isMethod('POST')) {
+            $validated = Validator::make($request->all(), [
+                'nik' => 'required|numeric|exists:student_candidates,nik'
+            ]);
 
-        return Pdf::loadView('pdf.student-card', compact('studentCandidate'))
-            ->setPaper('a4', 'portrait')
-            ->setWarnings(false)
-            ->stream(join('.', [join('-', [$studentCandidate->name, 'student-card']), 'pdf']));
+            if ($validated->fails()) {
+                return back()->withErrors([
+                    'nik' => 'NIK tidak ditemukan',
+                ]);
+            }
+
+            $studentCandidate = StudentCandidate::with(['academicYear'])->nik($request->nik)->firstOrFail();
+
+            return Pdf::loadView('pdf.student-card', compact('studentCandidate'))
+                ->setPaper('a4', 'portrait')
+                ->setWarnings(false)
+                ->stream(join('.', [join('-', [$studentCandidate->name, 'student-card']), 'pdf']));
+        }
+
+        return view('pages.landing.ppdb-show');
     }
 }

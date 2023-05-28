@@ -8,7 +8,7 @@
                     <div class="post-single">
                         <div class="post-thumb">
                             <x-lazy-image src="{{ $post->firstImage->original_url }}" alt="{{ $post->title }}"
-                                          class="img-fluid" style="width: 100%;object-fit: cover;"/>
+                                          class="img-fluid" style="width: 100%;height: 360px;object-fit: cover;"/>
                         </div>
                         <div class="blog-footer-meta mt-0 d-md-flex justify-content-between align-items-center">
                             <div class="post-tags mb-0">
@@ -39,7 +39,7 @@
                                         <div class="widget-thumb">
                                             <img src="{{ $latestPost->firstImage->original_url }}"
                                                  alt="{{ $latestPost->title }}"
-                                                 class="img-fluid">
+                                                 class="img-fluid" style="object-fit: cover;">
                                         </div>
                                         <div class="widget-content">
                                             <h5>{{ str($latestPost->title)->limit(50, '...') }}</h5>

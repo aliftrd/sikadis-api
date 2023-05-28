@@ -21,7 +21,8 @@
                          onclick="window.location.href='{{ route('landing.single-news', $post->slug) }}'">
                         <div class="blog-item mb-30">
                             <div class="post-thumb">
-                                <x-lazy-image src="{{ $post->thumbnail }}" alt="Thumbnail" class="img-fluid"/>
+                                <x-lazy-image src="{{ $post->thumbnail }}" alt="Thumbnail" class="img-fluid"
+                                              style="height: 360px;object-fit: cover;"/>
                             </div>
                             <div class="blog-content">
                                 <div class="post-meta">

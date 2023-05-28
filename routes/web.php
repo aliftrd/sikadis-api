@@ -22,9 +22,11 @@ Route::group(['as' => 'landing.'], function () {
     Route::group(['prefix' => 'ppdb', 'as' => 'ppdb.'], function () {
         Route::get('/', [App\Http\Controllers\LandingController::class, 'ppdb'])->name('index');
         Route::post('/', [App\Http\Controllers\LandingController::class, 'ppdbStore'])->name('store');
-        Route::get('/{student_candidate:nik}', [App\Http\Controllers\LandingController::class, 'ppdbShow'])->name('show');
+        Route::group(['prefix' => 'print'], function () {
+            Route::get('/', [App\Http\Controllers\LandingController::class, 'ppdbShow'])->name('show');
+            Route::post('/', [App\Http\Controllers\LandingController::class, 'ppdbShow'])->name('print');
+        });
     });
-
 });
 
 Auth::routes([
@@ -73,6 +75,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'v
 
     Route::group(['prefix' => 'student-candidates', 'as' => 'student-candidates.'], function () {
         Route::get('/', App\Http\Controllers\StudentCandidate\FetchStudentCandidateController::class)->name('index');
+        Route::get('/{studentCandidate}/edit', [App\Http\Controllers\StudentCandidate\UpdateStudentCandidateController::class, 'edit'])->name('edit');
+        Route::patch('/{studentCandidate}', [App\Http\Controllers\StudentCandidate\UpdateStudentCandidateController::class, 'update'])->name('update');
+        Route::delete('/{studentCandidate}', App\Http\Controllers\StudentCandidate\DestroyStudentCandidateController::class)->name('destroy');
     });
 
     Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('storage/' . $WEBSITE_LOGO) }}" type="image/x-icon">
     <meta name="author" content="Essential Developer">
 
-    <title>{{ join(' - ', [$title, $WEBSITE_TITLE ?? config('app.name', 'Laravel')]) }}</title>
+    <title>{{ isset($title) ? join(' - ', [$title, $WEBSITE_TITLE ?? config('app.name', 'Laravel')]) : $WEBSITE_TITLE ?? config('app.name', 'Laravel') }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/bootstrap/bootstrap.css') }}">
@@ -57,11 +57,14 @@
                                 </ul>
                             </li>
                         @endif
-                        @if($academic_year?->ppdb)
-                            <li><a href="{{ route('landing.ppdb.index') }}">PPDB</a></li>
-                        @endif
+                        <li>
+                            <a href="#">PPDB</a>
+                            <ul class="submenu">
+                                <li><a href="{{ route('landing.ppdb.index') }}">Pendaftaran</a></li>
+                                <li><a href="{{ route('landing.ppdb.show') }}">Cetak Formulir</a></li>
+                            </ul>
+                        </li>
                     </ul>
-
                     <a href="#" class="nav-close"><i class="fal fa-times"></i></a>
                 </nav>
 

@@ -41,4 +41,9 @@ class StudentCandidate extends Model implements HasMedia
     {
         return $this->belongsTo(AcademicYear::class);
     }
+
+    public function scopeNik($query, $nik)
+    {
+        return $query->where('nik', $nik);
+    }
 }
