@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\StudentCandidate;
 
+use App\Actions\StudentCandidate\UpdateStudentCandidateAction;
+use App\Enums\FlashType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentCandidate\UpdateStudentCandidateRequest;
 use App\Models\StudentCandidate;
 
 class UpdateStudentCandidateController extends Controller
@@ -17,8 +20,10 @@ class UpdateStudentCandidateController extends Controller
         return view('pages.student-candidate.form', compact('studentCandidate'));
     }
 
-    public function update(Request $request, StudentCandidate $studentCandidate)
+    public function update(UpdateStudentCandidateRequest $request, StudentCandidate $studentCandidate)
     {
+        UpdateStudentCandidateAction::resolve()->execute($request, $studentCandidate);
 
+        return $this->resolveForRedirectResponseWith('admin.student-candidates.index', FlashType::SUCCESS, 'Calon siswa berhasil diperbarui.');
     }
 }

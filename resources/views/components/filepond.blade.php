@@ -41,7 +41,7 @@
             },
         })
         pond.on('processfileprogress', function (e) {
-            $(this).find('form>button[type=submit]').attr('disabled', true);
+            document.querySelector('form>button[type=submit]').attr('disabled', true);
         })
     </script>
 @endpush

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Post\FetchPostsAction;
+use App\Actions\StudentCandidate\FetchStudentCandidateAction;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,6 +16,9 @@ class DashboardController extends Controller
      */
     public function __invoke()
     {
-        return view('pages.dashboard');
+        $studentCandidates = FetchStudentCandidateAction::resolve()->execute();
+        $latestPosts = FetchPostsAction::resolve()->execute();
+
+        return view('pages.dashboard', compact('studentCandidates', 'latestPosts'));
     }
 }

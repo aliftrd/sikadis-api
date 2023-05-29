@@ -13,6 +13,7 @@ class StudentCandidate extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     const FILE_COLLECTION = 'student-candidate-files';
+    const FILE_ADMIN_COLLECTION = 'student-candidate-admin-files';
 
     protected $fillable = [
         'academic_year_id',

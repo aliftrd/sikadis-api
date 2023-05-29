@@ -5,9 +5,11 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form method="post" action="{{ route('landing.ppdb.update', $studentCandidate->id) }}"
+                <form method="post"
+                      action="{{ route('admin.student-candidates.update', $studentCandidate->id) }}"
                       id="contactForm" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
 
                     <div class="form-group">
                         <label for="nik">NIK</label>
@@ -196,6 +198,30 @@
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                         @enderror
                     </div>
+                    @empty($studentCandidate->getMedia(\App\Models\StudentCandidate::FILE_ADMIN_COLLECTION)[0])
+                        <div class="form-group">
+                            <label for="files">Lampiran admin</label>
+                            <input type="file"
+                                   class="form-control h-auto @error('files') is-invalid @enderror"
+                                   name="files" id="files" style="padding-left: 10px;"
+                                   value="{{ old('files') }}" accept="image/*,application/pdf">
+                            @error('files')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @else
+                        <div class="alert alert-success">
+                            Lampiran admin <a
+                                href="{{ $studentCandidate->getMedia(\App\Models\StudentCandidate::FILE_ADMIN_COLLECTION)[0]->original_url }}">Lihat</a>
+                        </div>
+                    @endempty
+                    <hr>
+                    @if(!empty($studentCandidate->getMedia(\App\Models\StudentCandidate::FILE_COLLECTION)[0]))
+                        <div class="alert alert-success">
+                            Lampiran <a
+                                href="{{ $studentCandidate->getMedia(\App\Models\StudentCandidate::FILE_COLLECTION)[0]->original_url }}">Lihat</a>
+                        </div>
+                    @endif
                     <button class="btn btn-primary w-100 rounded-3" type="submit">Kirim</button>
                 </form>
             </div>
