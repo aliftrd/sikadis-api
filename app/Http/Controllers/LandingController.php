@@ -74,7 +74,7 @@ class LandingController extends Controller
     {
         StoreStudentCandidateAction::resolve()->execute($request);
 
-        return $this->resolveForRedirectResponseWith('landing.ppdb.index', FlashType::SUCCESS, 'Pendaftaran berhasil dikirimkan');
+        return $this->ppdbShow($request);
     }
 
     public function ppdbShow(Request $request)
